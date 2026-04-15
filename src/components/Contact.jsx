@@ -94,24 +94,52 @@ export default function Contact() {
               ))}
             </div>
 
-            {/* Embedded map placeholder */}
-            <div className="relative rounded-2xl overflow-hidden h-56 glass-card">
-              <iframe
-                title="Picklrs Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.2!2d73.1812!3d22.3072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDE4JzI2LjAiTiA3M8KwMTAnNTIuMyJF!5e0!3m2!1sen!2sin!4v1700000000"
-                width="100%"
-                height="100%"
-                style={{ border: 0, filter: 'saturate(0.7) contrast(1.05)' }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-              {/* Map overlay label */}
+            {/* Map card */}
+            <a
+              href="https://maps.app.goo.gl/naYXWMtLF7KavTRL6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block relative rounded-2xl overflow-hidden h-56 glass-card group cursor-pointer"
+            >
+              {/* Stylised court-pattern background */}
+              <svg className="w-full h-full" viewBox="0 0 480 224" preserveAspectRatio="xMidYMid slice" fill="none">
+                <defs>
+                  <linearGradient id="map-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%"   stopColor="#1e6e4c" />
+                    <stop offset="100%" stopColor="#0f3d2a" />
+                  </linearGradient>
+                </defs>
+                <rect width="480" height="224" fill="url(#map-bg)" />
+                {/* Grid lines */}
+                {[60,120,180,240,300,360,420].map(x => (
+                  <line key={x} x1={x} y1="0" x2={x} y2="224" stroke="white" strokeOpacity="0.05" strokeWidth="1" />
+                ))}
+                {[56,112,168].map(y => (
+                  <line key={y} x1="0" y1={y} x2="480" y2={y} stroke="white" strokeOpacity="0.05" strokeWidth="1" />
+                ))}
+                {/* Court outline */}
+                <rect x="100" y="40" width="280" height="144" stroke="white" strokeOpacity="0.15" strokeWidth="1.5" />
+                <line x1="100" y1="112" x2="380" y2="112" stroke="white" strokeOpacity="0.2" strokeWidth="2.5" strokeDasharray="10 6" />
+                <line x1="240" y1="40"  x2="240" y2="184" stroke="white" strokeOpacity="0.1" strokeWidth="1" />
+                {/* Pin */}
+                <circle cx="240" cy="100" r="14" fill="#d4a017" opacity="0.9" />
+                <circle cx="240" cy="100" r="6"  fill="white" />
+                <circle cx="240" cy="100" r="28" stroke="#d4a017" strokeOpacity="0.3" strokeWidth="1.5" fill="none" />
+              </svg>
+
+              {/* Hover overlay */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-green-700 text-xs font-semibold px-4 py-2 rounded-full shadow-card">
+                  Open in Google Maps ↗
+                </span>
+              </div>
+
+              {/* Label */}
               <div className="absolute bottom-3 left-3 bg-white/90 dark:bg-green-900/90 backdrop-blur-sm rounded-xl px-3 py-1.5 flex items-center gap-2 shadow-card">
                 <MapPin size={12} className="text-green-600" />
                 <span className="text-xs font-semibold text-gray-800 dark:text-white">Picklrs · Vadodara</span>
               </div>
-            </div>
+            </a>
 
             {/* Socials */}
             <div className="glass-card rounded-2xl p-5 flex items-center justify-between">
