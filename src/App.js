@@ -19,7 +19,7 @@ import Footer         from './components/Footer';
 
 function App() {
   const [loading,  setLoading]  = useState(true);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     const t = setTimeout(() => setLoading(false), 2400);
