@@ -1,13 +1,210 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    background-color: #ffffff;
+    color: #1a1a1a;
+  }
+
+  .dark body {
+    background-color: #0a1a10;
+    color: #f5f5f5;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e6e4c;
+    border-radius: 3px;
+  }
+  .dark ::-webkit-scrollbar-track {
+    background: #0f3d2a;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: #d4a017;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components {
+  .font-display {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  .dark .glass-card {
+    background: rgba(8, 39, 24, 0.75);
+    border: 1px solid rgba(212, 160, 23, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .gold-text {
+    background: linear-gradient(135deg, #d4a017, #f0c040, #d4a017);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  .btn-primary {
+    @apply bg-green-600 text-white px-7 py-3 rounded-full font-semibold text-sm tracking-wide
+           hover:bg-green-700 active:scale-95 transition-all duration-200 shadow-green;
+  }
+
+  .btn-gold {
+    @apply bg-gold-500 text-white px-7 py-3 rounded-full font-semibold text-sm tracking-wide
+           hover:bg-gold-600 active:scale-95 transition-all duration-200 shadow-gold;
+  }
+
+  .btn-outline {
+    @apply border-2 border-green-600 text-green-600 px-7 py-3 rounded-full font-semibold text-sm tracking-wide
+           hover:bg-green-600 hover:text-white active:scale-95 transition-all duration-200;
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32;
+  }
+
+  .section-heading {
+    @apply font-display text-4xl md:text-5xl font-bold text-gray-900 leading-tight;
+  }
+
+  .dark .section-heading {
+    @apply text-white;
+  }
+
+  .gold-divider {
+    @apply w-16 h-0.5 bg-gold-500 mx-auto my-4;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-premium;
+  }
 }
+
+@layer utilities {
+  .text-shadow-sm {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  }
+
+  .bg-gold-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(212, 160, 23, 0.12), transparent);
+    background-size: 200% auto;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-12px); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes spin_slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.7s ease-out forwards;
+  }
+
+  .animate-spin-slow {
+    animation: spin_slow 20s linear infinite;
+  }
+
+  /* ── Extra reveal keyframes ── */
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.85); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  @keyframes clipWipeUp {
+    from { clip-path: inset(100% 0 0 0); }
+    to   { clip-path: inset(0 0 0 0); }
+  }
+  @keyframes rotateIn {
+    from { opacity: 0; transform: rotate(-12deg) scale(0.88); }
+    to   { opacity: 1; transform: rotate(0deg)   scale(1); }
+  }
+  @keyframes bounceIn {
+    0%   { opacity: 0; transform: scale(0.6) translateY(20px); }
+    60%  { opacity: 1; transform: scale(1.05) translateY(-4px); }
+    80%  { transform: scale(0.97) translateY(2px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  @keyframes goldPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212,160,23,0.0); }
+    50%      { box-shadow: 0 0 0 8px rgba(212,160,23,0.12); }
+  }
+  @keyframes morphBlob {
+    0%,100% { border-radius: 60% 40% 70% 30% / 40% 60% 30% 70%; }
+    25%     { border-radius: 40% 60% 30% 70% / 60% 40% 70% 30%; }
+    50%     { border-radius: 70% 30% 60% 40% / 30% 70% 40% 60%; }
+    75%     { border-radius: 30% 70% 40% 60% / 70% 30% 60% 40%; }
+  }
+  @keyframes drawLine {
+    from { stroke-dashoffset: 1000; }
+    to   { stroke-dashoffset: 0; }
+  }
+
+  .animate-slide-left   { animation: slideInLeft  0.7s ease-out forwards; }
+  .animate-slide-right  { animation: slideInRight 0.7s ease-out forwards; }
+  .animate-scale-in     { animation: scaleIn      0.6s ease-out forwards; }
+  .animate-clip-wipe    { animation: clipWipeUp   0.8s cubic-bezier(0.22,1,0.36,1) forwards; }
+  .animate-rotate-in    { animation: rotateIn     0.65s ease-out forwards; }
+  .animate-bounce-in    { animation: bounceIn     0.7s ease-out forwards; }
+  .animate-gold-pulse   { animation: goldPulse    2.5s ease-in-out infinite; }
+  .animate-morph-blob   { animation: morphBlob    8s ease-in-out infinite; }
+}
+
+/* ── Perspective for 3D card tilt ── */
+.perspective-1000 { perspective: 1000px; }
+.preserve-3d      { transform-style: preserve-3d; }
+
