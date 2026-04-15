@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
-import { CheckCircle2, Star, Crown, Zap } from 'lucide-react';
+import { CheckCircle2, Star, Crown } from 'lucide-react';
 import Pickleball3D from './Pickleball3D';
 
 const plans = [
-  {
-    id: 'starter', name: 'Starter', price: '1,499', icon: Zap,
-    tagline: 'Perfect for casual players',
-    border: 'border-gray-200 dark:border-green-700/50', badge: null,
-    features: ['4 court hours / month','Weekday access only','Locker access','Basic coaching sessions','Wi-Fi & changing room','Member app access'],
-    cta: 'Get Started', isGold: false, isPop: false,
-  },
   {
     id: 'pro', name: 'Pro', price: '3,499', icon: Star,
     tagline: 'For the dedicated player',
