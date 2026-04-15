@@ -6,17 +6,17 @@ import Pickleball3D from './Pickleball3D';
 
 const plans = [
   {
-    id: 'pro', name: 'Pro', price: '3,499', icon: Star,
+    id: 'pro', name: 'Pro', price: '4,000', icon: Star,
     tagline: 'For the dedicated player',
     border: 'border-green-500', badge: 'Most Popular',
-    features: ['12 court hours / month','7-day access','Guest passes (2/month)','Weekly group coaching','Fitness suite access','Equipment discounts','Priority booking','Members lounge'],
+    features: ['5,000 credit points / month','1 credit = ₹1','24/7 access','Café discount'],
     cta: 'Join Pro', isGold: false, isPop: true,
   },
   {
-    id: 'elite', name: 'Elite', price: '6,999', icon: Crown,
+    id: 'elite', name: 'Elite', price: '7,000', icon: Crown,
     tagline: 'The ultimate Picklrs experience',
     border: 'border-gold-500', badge: 'Exclusive',
-    features: ['Unlimited court hours','24/7 access','Unlimited guest passes','Personal coach (2×/week)','Video analysis sessions','Physio & recovery access','Valet parking included','Pro shop 20% off','Tournament priority entry'],
+    features: ['8,500 credit points / month','1 credit = ₹1','24/7 access','Court charges ₹700 / hour','Higher booking preference'],
     cta: 'Go Elite', isGold: true, isPop: false,
   },
 ];
